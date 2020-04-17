@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="list-app">
+        <p>Shopping list</p>
+        <ul>
+            <li v-for="item in shoppingList">
+                {{ item }}
+            </li>
+        </ul>
+    </div>
+
+    <div id="if-app">
+        <span v-if="seeable">You can see this text!</span>
+        <button v-on:click="toggleMessage">Toggle Message</button>
+    </div>
+
+    <script>
+        let myVue = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World!"
+            }
+        });
+
+        let listVue = new Vue({
+            el: "#list-app",
+            data: {
+                shoppingList: ["flour", "eggs", "salt", "baking powder", "potatoes", "onions"]
+            }
+        });
+
+        let ifVue = new Vue({
+            el: "#if-app",
+            data: {
+                seeable: true
+            },
+            methods: {
+                toggleMessage: function (){
+                    this.seeable = !this.seeable
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
